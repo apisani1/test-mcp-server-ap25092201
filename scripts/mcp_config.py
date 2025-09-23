@@ -23,7 +23,9 @@ def detect_package_type(package_spec: str) -> str:
     """Detect the type of package specification."""
     if package_spec.startswith("git+"):
         return "git"
-    elif package_spec.startswith(("https://github.com/", "http://github.com/", "https://gitlab.com/", "https://bitbucket.org/")):
+    elif package_spec.startswith(
+        ("https://github.com/", "http://github.com/", "https://gitlab.com/", "https://bitbucket.org/")
+    ):
         return "github_raw"
     elif package_spec.startswith(("/", "./", "../")) or package_spec.startswith("-e"):
         return "local"
@@ -50,20 +52,20 @@ def extract_server_name(package_spec: str, filepath: Optional[Path] = None) -> O
 
     if package_type == "pypi":
         # Extract package name from PyPI spec (remove version constraints)
-        name = re.split(r'[><=!~]', package_spec.split('[')[0])[0]
-        return name.replace('-', '_').replace('_', '-')
+        name = re.split(r"[><=!~]", package_spec.split("[")[0])[0]
+        return name.replace("-", "_").replace("_", "-")
     elif package_type == "git":
         # Extract from git URL
-        match = re.search(r'/([^/]+?)(?:\.git)?(?:#.*)?$', package_spec)
+        match = re.search(r"/([^/]+?)(?:\.git)?(?:#.*)?$", package_spec)
         if match:
             return match.group(1)
     elif package_type == "github_raw":
         # Extract from GitHub raw URL (e.g., filename without .py)
-        match = re.search(r'/([^/]+?)\.py$', package_spec)
+        match = re.search(r"/([^/]+?)\.py$", package_spec)
         if match:
-            return match.group(1).replace('_', '-')
+            return match.group(1).replace("_", "-")
         # Fallback: extract repository name
-        match = re.search(r'/([^/]+?)/[^/]+?/[^/]+?/', package_spec)
+        match = re.search(r"/([^/]+?)/[^/]+?/[^/]+?/", package_spec)
         if match:
             return match.group(1)
     elif "/" in package_spec:
@@ -86,7 +88,7 @@ def get_bootstrap_script_path() -> Path:
     for path in [
         Path.home() / ".mcp" / "bootstrap" / "universal-bootstrap.sh",
         Path("/usr/local/bin/universal-bootstrap.sh"),
-        script_dir.parent / "scripts" / "universal-bootstrap.sh"
+        script_dir.parent / "scripts" / "universal-bootstrap.sh",
     ]:
         if path.exists():
             return path
@@ -100,7 +102,7 @@ def create_or_update_config(
     package_spec: str,
     config_file: Path,
     server_args: Optional[List[str]] = None,
-    bootstrap_url: str = "https://raw.githubusercontent.com/apisani1/mcp-python-bootstrap/main/scripts/universal-bootstrap.sh"
+    bootstrap_url: str = "https://raw.githubusercontent.com/apisani1/mcp-python-bootstrap/main/scripts/universal-bootstrap.sh",
 ) -> bool:
     """Create or update the MCP configuration file using bootstrap script."""
     try:
@@ -138,10 +140,7 @@ def create_or_update_config(
 
             config_data["mcpServers"][server_name] = {
                 "command": "sh",
-                "args": [
-                    "-c",
-                    f'{bootstrap_cmd} "{raw_url}"{server_args_str}'
-                ]
+                "args": ["-c", f'{bootstrap_cmd} "{raw_url}"{server_args_str}'],
             }
         else:
             # For local/PyPI/git packages, use local bootstrap script
@@ -150,10 +149,7 @@ def create_or_update_config(
             if server_args:
                 args.extend(server_args)
 
-            config_data["mcpServers"][server_name] = {
-                "command": "bash",
-                "args": args
-            }
+            config_data["mcpServers"][server_name] = {"command": "bash", "args": args}
 
         # Add comment/metadata for better understanding
         if server_name not in config_data["mcpServers"] or "_metadata" not in config_data["mcpServers"][server_name]:
@@ -161,7 +157,7 @@ def create_or_update_config(
                 "package_type": detect_package_type(package_spec),
                 "package_spec": package_spec,
                 "generated_by": "mcp_config.py",
-                "bootstrap_version": "1.2.0"
+                "bootstrap_version": "1.2.0",
             }
 
         # Write updated config using a temporary file for atomic operation
@@ -203,7 +199,9 @@ def print_usage():
     print("  python3 mcp_config.py mcp-server-filesystem")
     print("  python3 mcp_config.py ./src/my_server.py --name my-server")
     print("  python3 mcp_config.py mcp-server-database==1.2.0 --args '--db-path,/tmp/db.sqlite'")
-    print("  python3 mcp_config.py https://github.com/user/repo/blob/main/server.py --bootstrap-url https://example.com/bootstrap.sh")
+    print(
+        "  python3 mcp_config.py https://github.com/user/repo/blob/main/server.py --bootstrap-url https://example.com/bootstrap.sh"
+    )
 
 
 def parse_args():
@@ -217,7 +215,9 @@ def parse_args():
     server_name = None
     config_file_name = None
     server_args = []
-    bootstrap_url = "https://raw.githubusercontent.com/apisani1/mcp-python-bootstrap/main/scripts/universal-bootstrap.sh"
+    bootstrap_url = (
+        "https://raw.githubusercontent.com/apisani1/mcp-python-bootstrap/main/scripts/universal-bootstrap.sh"
+    )
 
     i = 1
     while i < len(args):
@@ -228,7 +228,7 @@ def parse_args():
             config_file_name = args[i + 1]
             i += 2
         elif args[i] == "--args" and i + 1 < len(args):
-            server_args = args[i + 1].split(',')
+            server_args = args[i + 1].split(",")
             i += 2
         elif args[i] == "--bootstrap-url" and i + 1 < len(args):
             bootstrap_url = args[i + 1]
@@ -239,9 +239,7 @@ def parse_args():
 
     # Default config file
     if not config_file_name:
-        config_file_name = os.path.expanduser(
-            "~/Library/Application Support/Claude/claude_desktop_config.json"
-        )
+        config_file_name = os.path.expanduser("~/Library/Application Support/Claude/claude_desktop_config.json")
 
     return package_spec, server_name, config_file_name, server_args, bootstrap_url
 
@@ -257,11 +255,7 @@ def main() -> None:
             filepath = Path(package_spec)
             if not filepath.exists():
                 # Try relative to common source locations
-                for base_path in [
-                    Path("src/mcp_masterclass"),
-                    Path("src"),
-                    Path(".")
-                ]:
+                for base_path in [Path("src/test_mcp_server_ap25092201"), Path("src"), Path(".")]:
                     test_path = base_path / package_spec
                     if test_path.exists():
                         filepath = test_path

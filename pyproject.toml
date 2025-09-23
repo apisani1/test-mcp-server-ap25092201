@@ -12,7 +12,7 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/apisani1/test-mcp-server-ap25092201"
 repository = "https://github.com/apisani1/test-mcp-server-ap25092201"
-documentation = "https://mcp-masterclass.readthedocs.io/"
+documentation = "https://test-mcp-server-ap25092201.readthedocs.io/"
 keywords = ["mcp", "server", "ai", "assistant", "media", "prompts", "bootstrap", "testing"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -34,7 +34,7 @@ test-mcp-server = "test_mcp_server_ap25092201.prompt_server:main"
 [tool.poetry.urls]
 "Source Code" = "https://github.com/apisani1/test-mcp-server-ap25092201"
 "Release Notes" = "https://github.com/apisani1/test-mcp-server-ap25092201/releases"
-"Documentation" = "https://mcp-masterclass.readthedocs.io/"
+"Documentation" = "https://test-mcp-server-ap25092201.readthedocs.io/"
 "Issue Tracker" = "https://github.com/apisani1/test-mcp-server-ap25092201/issues"
 
 [tool.semantic_release]

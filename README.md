@@ -184,13 +184,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Related Projects
 
-- [MCP Masterclass](https://mcp-masterclass.readthedocs.io/) - Documentation and tutorials
 - [mcp-python-bootstrap](https://github.com/your-org/mcp-python-bootstrap) - Bootstrap scripts for MCP projects
 - [FastMCP](https://github.com/jlowin/fastmcp) - Fast MCP server implementation
 
 ## Support
 
-- 📖 [Documentation](https://mcp-masterclass.readthedocs.io/)
+- 📖 [Documentation](https://test-mcp-server-ap25092201.readthedocs.io/)
 - 🐛 [Issue Tracker](https://github.com/apisani1/test-mcp-server-ap25092201/issues)
 - 💬 [Discussions](https://github.com/apisani1/test-mcp-server-ap25092201/discussions)
 

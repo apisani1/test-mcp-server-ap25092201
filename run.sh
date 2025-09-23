@@ -555,7 +555,7 @@ function help:release {
 function help {
     echo "$0 <task> <args>"
     echo ""
-    echo "====== mcp-masterclass Development Tool ======"
+    echo "====== MCP Test Server Development Tool ======"
     echo ""
     echo "Environment:"
     echo "  install              - Install core dependencies"

@@ -244,7 +244,7 @@ mcp-dev:
 ######################
 
 help:
-	@echo '====== mcp-masterclass Development Tool ======'
+	@echo '====== Test MCP Server Development Tool ======'
 	@echo ''
 	@echo 'Environment:'
 	@echo '  make install              - Install core dependencies'
