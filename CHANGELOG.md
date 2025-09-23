@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1] - 2025-09-23
+
+ ### Changes
+- 📝 docs: simplify README.md and remove unnecessary sections
+
+
+
 ## [0.1.1b1] - 2025-09-23
 
  ### Changes
