@@ -12,17 +12,14 @@ This package provides a complete MCP server implementation that includes:
 
 - **Media Handler**: Image and audio processing capabilities with PyAutoGUI integration
 - **Prompt Server**: FastMCP-based server with resource management and prompt handling
-- **Prompt Client**: OpenAI client integration for AI interactions
-- **Bootstrap Testing**: Designed to test mcp-python-bootstrap project compatibility
+- **Bootstrap Testing**: Designed to test mcp-python-bootstrap project
 
 ## Features
 
-- 🖼️ **Image Processing**: Screenshot capture and image manipulation using PyAutoGUI
+- 🖼️ **Image Processing**: Image proccesing using PyAutoGUI
 - 🎵 **Audio Handling**: Audio resource management and processing
-- 🤖 **AI Integration**: OpenAI client for prompt processing and responses
 - 🔧 **MCP Protocol**: Full Model Context Protocol implementation using FastMCP
-- 📦 **Modular Design**: Clean separation between media handling, server logic, and client operations
-- 🚀 **Bootstrap Ready**: Prepared for migration from Poetry to uv for bootstrap compatibility
+- 🚀 **Bootstrap Ready**: Prepared for migration from Poetry to uv for bootstrap testing
 
 ## Installation
 
@@ -38,27 +35,7 @@ pip install test-mcp-server-ap25092201
 pip install git+https://github.com/apisani1/test-mcp-server-ap25092201.git
 ```
 
-### For Development
-
-```bash
-git clone https://github.com/apisani1/test-mcp-server-ap25092201.git
-cd test-mcp-server-ap25092201
-poetry install
-```
-
 ## Quick Start
-
-### Basic Usage
-
-```python
-from test_mcp_server_ap25092201.prompt_server import mcp
-
-# Initialize the MCP server
-server = mcp
-
-# The server provides various resources and prompts
-# See the MCP protocol documentation for integration details
-```
 
 ### Running the MCP Server
 
@@ -68,29 +45,6 @@ python -m test_mcp_server_ap25092201.prompt_server
 
 # Or using make commands for development
 make run prompt_server
-```
-
-### Media Handling
-
-```python
-from test_mcp_server_ap25092201.media_handler import get_image, get_audio
-
-# Capture and process images
-image_data = get_image("path/to/image.png")
-
-# Handle audio resources
-audio_data = get_audio("path/to/audio.wav")
-```
-
-### AI Client Integration
-
-```python
-from test_mcp_server_ap25092201.prompt_client import create_client
-
-# Initialize OpenAI client
-client = create_client()
-
-# Use with your AI workflows
 ```
 
 ## Development
@@ -168,15 +122,6 @@ src/test_mcp_server_ap25092201/
 - `flake8` - Linting
 - `mypy` - Type checking
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Run tests and linting (`make test lint`)
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
 
 ## License
 
