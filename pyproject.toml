@@ -13,7 +13,16 @@ readme = "README.md"
 homepage = "https://github.com/apisani1/test-mcp-server-ap25092201"
 repository = "https://github.com/apisani1/test-mcp-server-ap25092201"
 documentation = "https://test-mcp-server-ap25092201.readthedocs.io/"
-keywords = ["mcp", "server", "ai", "assistant", "media", "prompts", "bootstrap", "testing"]
+keywords = [
+    "mcp",
+    "server",
+    "ai",
+    "assistant",
+    "media",
+    "prompts",
+    "bootstrap",
+    "testing",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -47,15 +56,12 @@ version_variable = [
 [tool.poetry.dependencies]
 python = "^3.10"
 mcp = { extras = ["cli"], version = "^1.14.1" }
-openai = { version = "^1.102.0", optional = true }
 pyautogui = { version = "^0.9.54", optional = true }
 pyscreeze = { version = "^1.0.1", optional = true }
 pillow = { version = "^10.0.0", optional = true }
 
 [tool.poetry.extras]
-ai = ["openai"]
-media = ["pyautogui", "pyscreeze", "pillow"]
-full = ["openai", "pyautogui", "pyscreeze", "pillow"]
+
 
 [tool.poetry.group.dev]
 optional = true
