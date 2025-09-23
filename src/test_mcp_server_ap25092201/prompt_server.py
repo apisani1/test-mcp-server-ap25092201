@@ -20,17 +20,10 @@ from mcp.types import (
     TextContent,
 )
 
-
-try:
-    from .media_handler import (
-        get_audio,
-        get_image,
-    )
-except ImportError:
-    from src.test_mcp_server_ap25092201.media_handler import (
-        get_audio,
-        get_image,
-    )
+from .media_handler import (
+    get_audio,
+    get_image,
+)
 
 
 mcp = FastMCP("My Prompts")
@@ -120,6 +113,11 @@ def send_content_uri(content_uri: str) -> List[Message]:
     ]
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Entry point for the MCP server CLI command."""
     print("Starting MCP PromptServer...")
     mcp.run()
+
+
+if __name__ == "__main__":
+    main()

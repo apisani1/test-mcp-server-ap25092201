@@ -5,15 +5,35 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "test-mcp-server-ap25092201"
-version = "0.0.0"
-description = "Code from MCP Masterclass Course"
+version = "0.1.0"
+description = "Test MCP Server with media handling and prompt capabilities for bootstrap testing"
 authors = ["Antonio Pisani <antonio.pisani@gmail.com>"]
+license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/apisani1/test-mcp-server-ap25092201"
+repository = "https://github.com/apisani1/test-mcp-server-ap25092201"
+documentation = "https://mcp-masterclass.readthedocs.io/"
+keywords = ["mcp", "server", "ai", "assistant", "media", "prompts", "bootstrap", "testing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 packages = [{ include = "test_mcp_server_ap25092201", from = "src" }]
+
+[tool.poetry.scripts]
+test-mcp-server = "test_mcp_server_ap25092201.prompt_server:main"
 
 [tool.poetry.urls]
 "Source Code" = "https://github.com/apisani1/test-mcp-server-ap25092201"
-"Release Notes" = "https://github.com/apisani1/test-mcp-server-ap25092201"
+"Release Notes" = "https://github.com/apisani1/test-mcp-server-ap25092201/releases"
 "Documentation" = "https://mcp-masterclass.readthedocs.io/"
 "Issue Tracker" = "https://github.com/apisani1/test-mcp-server-ap25092201/issues"
 
@@ -25,12 +45,17 @@ version_variable = [
 ]
 
 [tool.poetry.dependencies]
-openai = "^1.102.0"
 python = "^3.10"
-pyautogui = "^0.9.54"
-pyscreeze = "^1.0.1"
-pillow = "^10.0.0"
 mcp = { extras = ["cli"], version = "^1.14.1" }
+openai = { version = "^1.102.0", optional = true }
+pyautogui = { version = "^0.9.54", optional = true }
+pyscreeze = { version = "^1.0.1", optional = true }
+pillow = { version = "^10.0.0", optional = true }
+
+[tool.poetry.extras]
+ai = ["openai"]
+media = ["pyautogui", "pyscreeze", "pillow"]
+full = ["openai", "pyautogui", "pyscreeze", "pillow"]
 
 [tool.poetry.group.dev]
 optional = true
