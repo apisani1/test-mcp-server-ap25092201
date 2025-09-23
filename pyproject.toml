@@ -2,22 +2,13 @@
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[project]
+
+[tool.poetry]
 name = "test-mcp-server-ap25092201"
 version = "0.0.0"
 description = "Code from MCP Masterclass Course"
-authors = [{ name = "Antonio Pisani", email = "antonio.pisani@gmail.com" }]
+authors = ["Antonio Pisani <antonio.pisani@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.10"
-# dependencies = [
-#     "pyautogui (>=0.9.54,<0.10.0)",
-#     "pyscreeze (>=1.0.1,<2.0.0)",
-#     "types-requests (>=2.32.4.20250809,<3.0.0.0)",
-#     "openai (>=1.102.0,<2.0.0)",
-#     "mcp[cli] (>=1.14.1,<2.0.0)",
-# ]
-
-[tool.poetry]
 packages = [{ include = "test_mcp_server_ap25092201", from = "src" }]
 
 [tool.poetry.urls]
