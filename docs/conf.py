@@ -14,7 +14,7 @@ from datetime import datetime
 project = "test-mcp-server-ap25092201"
 copyright = f"{datetime.now().year}, Antonio Pisani"
 author = "Antonio Pisani"
-release = "0.1.2"
+release = "0.1.3"
 
 os.environ["SPHINX_BUILD"] = "True"
 

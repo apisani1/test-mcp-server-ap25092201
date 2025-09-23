@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3] - 2025-09-23
+
+ ### Changes
+- Update poetry lock
+- Correct pillow dependecy
+
+
+
 ## [0.1.2] - 2025-09-23
 
  ### Changes
