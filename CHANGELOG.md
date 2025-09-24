@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4rc3] - 2025-09-24
+
+ ### Changes
+- 🚀 ci: migrate release workflow from Poetry to uv
+
+
+
 ## [0.1.4rc2] - 2025-09-24
 
  ### Changes
