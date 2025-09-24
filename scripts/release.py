@@ -306,9 +306,15 @@ def update_version_files(project_file: str, new_version: Version) -> None:
                 logger.warning(f"'{file_path}' does not exist, skipping.")
                 continue
             content = file.read_text()
-            new_content, found = re.subn(
-                rf'{version_key} = "[^"]+"', f'{version_key} = "{new_version}"', content, count=1
-            )
+            # Handle special case for pyproject.toml project.version
+            if version_key == "project.version":
+                pattern = r'version = "[^"]+"'
+                replacement = f'version = "{new_version}"'
+            else:
+                pattern = rf'{version_key} = "[^"]+"'
+                replacement = f'{version_key} = "{new_version}"'
+
+            new_content, found = re.subn(pattern, replacement, content, count=1)
             if found:
                 file.write_text(new_content)
                 updated_files.append(file_path)
