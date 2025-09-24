@@ -29,23 +29,19 @@ jobs:
         with:
           python-version: '^3.10'
 
-      - name: Cache Poetry dependencies
+      - name: Cache uv dependencies
         uses: actions/cache@v4
         with:
-          path: .venv
-          key: ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-uv-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
-            ${{ runner.os }}-poetry-
+            ${{ runner.os }}-uv-
 
-      - name: Install Poetry
+      - name: Install uv
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry --version
-
-      - name: Configure Poetry
-        run: |
-          poetry config virtualenvs.create true
-          poetry config virtualenvs.in-project true
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+          uv --version
 
       - name: Determine release type and latest status
         id: release-info
@@ -102,7 +98,7 @@ jobs:
       # Always test on TestPyPI first
       - name: Test PyPI release
         env:
-          POETRY_PYPI_TOKEN_TESTPYPI: ${{ secrets.TEST_PYPI_TOKEN }}
+          UV_PUBLISH_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
         run: ./run.sh publish:test
 
       - name: Test installation from TestPyPI
@@ -131,7 +127,7 @@ jobs:
       - name: Publish to PyPI
         if: steps.release-info.outputs.release_type == 'release'
         env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: ./run.sh publish
 
       # Only update ReadTheDocs for stable releases
