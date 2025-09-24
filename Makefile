@@ -226,7 +226,7 @@ run:
 		exit 1; \
 	fi
 	@MODULE_NAME=$$(echo "$(filter-out $@,$(MAKECMDGOALS))" | sed 's/\.py$$//'); \
-	uv run python -m test_mcp_server_ap25092201.$$MODULE_NAME
+	PYTHONPATH=src uv run python -m test_mcp_server_ap25092201.$$MODULE_NAME
 
 # Generate MCP server configuration
 mcp-config:

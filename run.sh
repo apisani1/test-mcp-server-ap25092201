@@ -440,8 +440,8 @@ function docs:check {
 # Clean and rebuild documentation
 function docs:clean {
     echo "Cleaning documentation build files..."
-    cd docs && uv run make clean
-    cd docs && uv run make html
+    (cd docs && uv run make clean)
+    (cd docs && uv run make html)
 }
 
 ######################
@@ -474,7 +474,7 @@ function try-load-dotenv {
 function build {
     echo "Building package..."
     clean
-    uv build
+    uv build .
 }
 
 # Publish to TestPyPI
