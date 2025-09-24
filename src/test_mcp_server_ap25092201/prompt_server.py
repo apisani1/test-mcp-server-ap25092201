@@ -20,6 +20,7 @@ from mcp.types import (
     TextContent,
 )
 
+from . import __version__
 from .media_handler import (
     get_audio,
     get_image,
@@ -115,7 +116,7 @@ def send_content_uri(content_uri: str) -> List[Message]:
 
 def main() -> None:
     """Entry point for the MCP server CLI command."""
-    print("Starting MCP PromptServer...")
+    print(f"Starting MCP PromptServer version {__version__}...")
     mcp.run()
 
 
