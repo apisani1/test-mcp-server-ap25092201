@@ -12,10 +12,10 @@ This documentation covers the test-mcp-server-ap25092201 library.
 pip install test_mcp_server_ap25092201
 ```
 
-Or, if you use Poetry:
+Or, if you use uv:
 
 ```bash
-poetry add test_mcp_server_ap25092201
+uv add test_mcp_server_ap25092201
 ```
 
 ## Quick Start

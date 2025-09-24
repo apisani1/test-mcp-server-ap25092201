@@ -36,8 +36,8 @@ except ImportError:
 
 
 server_params = StdioServerParameters(
-    command="poetry",
-    args=["run", "python3", "-m", "src.test_mcp_server_ap25092201.prompt_server"],  # Optional command line arguments
+    command="uv",
+    args=["run", "python", "-m", "src.test_mcp_server_ap25092201.prompt_server"],  # Optional command line arguments
 )
 
 

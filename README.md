@@ -2,7 +2,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
 A test MCP (Model Context Protocol) server implementation with media handling and prompt capabilities, designed for testing bootstrap scripts and demonstrating MCP integration patterns.
 
@@ -52,7 +52,7 @@ make run prompt_server
 ### Prerequisites
 
 - Python 3.10+
-- Poetry for dependency management
+- uv for dependency management
 - Git for version control
 
 ### Setup Development Environment
@@ -61,6 +61,9 @@ make run prompt_server
 # Clone the repository
 git clone https://github.com/apisani1/test-mcp-server-ap25092201.git
 cd test-mcp-server-ap25092201
+
+# Install uv if not already installed
+pip install uv
 
 # Install dependencies
 make install-dev
@@ -93,8 +96,8 @@ make publish      # Publish to PyPI
 
 This package is specifically designed to test the mcp-python-bootstrap project:
 
-1. **Current State**: Uses Poetry for dependency management
-2. **Future Migration**: Will be migrated to uv for bootstrap script compatibility
+1. **Current State**: Uses uv for dependency management
+2. **Bootstrap Ready**: Prepared for bootstrap script compatibility testing
 3. **Testing Target**: Validates bootstrap scripts can properly handle MCP server packages
 
 ## Project Structure

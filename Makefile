@@ -32,6 +32,10 @@ install-all:
 update:
 	@./run.sh update
 
+# Update only core dependencies (removes dev extras)
+update-core:
+	@./run.sh update:core
+
 # Create a new virtual environment
 venv:
 	@./run.sh venv
@@ -222,7 +226,7 @@ run:
 		exit 1; \
 	fi
 	@MODULE_NAME=$$(echo "$(filter-out $@,$(MAKECMDGOALS))" | sed 's/\.py$$//'); \
-	PYTHONPATH=src poetry run python3 -m test_mcp_server_ap25092201.$$MODULE_NAME
+	uv run python -m test_mcp_server_ap25092201.$$MODULE_NAME
 
 # Generate MCP server configuration
 mcp-config:
@@ -249,7 +253,8 @@ help:
 	@echo 'Environment:'
 	@echo '  make install              - Install core dependencies'
 	@echo '  make install-dev          - Install all development dependencies'
-	@echo '  make update               - Update dependencies'
+	@echo '  make update               - Update all dependencies (preserves dev extras)'
+	@echo '  make update-core          - Update core dependencies only (removes dev extras)'
 	@echo '  make venv                 - Create and activate virtual environment'
 	@echo ''
 	@echo 'Linting & Formatting:'
