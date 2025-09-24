@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4] - 2025-09-24
+
+ ### Changes
+- ✨ feat: add version display to server startup message
+
+
+
 ## [0.1.4rc3] - 2025-09-24
 
  ### Changes
