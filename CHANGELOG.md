@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4rc2] - 2025-09-24
+
+ ### Changes
+- Changes to test release script
+
+
+
 ## [0.1.4rc1] - 2025-09-24
 
  ### Changes
