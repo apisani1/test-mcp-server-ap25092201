@@ -152,7 +152,7 @@ def get_commits_since_tag(tag: Optional[str]) -> list[str]:
 
 def get_current_version(project_file: str) -> Version:
     """Get current version from project file"""
-    version_text = read_from_toml_file(project_file, "poetry", "version")
+    version_text = read_from_toml_file(project_file, "project", "version")
     if not version_text:
         logger.error(f"Could not find version in '{project_file}'. Please check the file format.")
         raise ValueError(f"Version not found in '{project_file}'. Please check the file format.")
@@ -166,7 +166,7 @@ def get_current_version(project_file: str) -> Version:
 
 
 def read_from_toml_file(file_path: str, section: str, key: str) -> Optional[str]:
-    """Reads a toml file to get the contents of a specific tool section and key."""
+    """Reads a toml file to get the contents of a specific section and key."""
     try:
         import tomllib  # Part of the standard library on Python 3.11+
     except ImportError:
@@ -183,12 +183,20 @@ def read_from_toml_file(file_path: str, section: str, key: str) -> Optional[str]
     try:
         with open(toml_file, "rb") as f:
             toml_data = tomllib.load(f)
-        value = toml_data.get("tool").get(section, {}).get(key)
+
+        # Handle both project.* and tool.* sections
+        if section == "project":
+            value = toml_data.get(section, {}).get(key)
+            section_path = f"{section}.{key}"
+        else:
+            value = toml_data.get("tool", {}).get(section, {}).get(key)
+            section_path = f"tool.{section}.{key}"
+
         if not value:
-            logger.warning(f"'{key}' field of section 'tool.{section}' not found in '{file_path}'.")
+            logger.warning(f"'{key}' field of section '{section_path}' not found in '{file_path}'.")
         return value
     except Exception as e:
-        logger.error(f"Error reading '{key}' field of section 'tool.{section}' from {file_path}: {e}")
+        logger.error(f"Error reading '{key}' field of section '{section_path}' from {file_path}: {e}")
         raise
 
 

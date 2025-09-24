@@ -59,11 +59,13 @@ fi
 # === VERSION AND CHANGELOG ===
 
 if $DRY_RUN; then
-    echo "Would set Poetry version to $NEW_VERSION"
+    echo "Would set version to $NEW_VERSION in pyproject.toml"
 else
     echo "Resetting version to $NEW_VERSION..."
-    poetry version "$NEW_VERSION"
+    # Update version in pyproject.toml using sed
+    sed -i.bak "s/^version = \".*\"/version = \"$NEW_VERSION\"/" pyproject.toml
     check_command "Failed to update version"
+    rm pyproject.toml.bak 2>/dev/null || true
 fi
 
 if $DRY_RUN; then
