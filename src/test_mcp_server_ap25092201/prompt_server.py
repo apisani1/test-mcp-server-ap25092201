@@ -120,8 +120,9 @@ def main() -> None:
     print(f"****Starting MCP PromptServer version {__version__}...", file=sys.stderr)
     try:
         mcp.run()
+        print("****MCP Server stopped.", file=sys.stderr)
     except Exception as e:
-        print(f"****MCP Server catch Error: {e}", file=sys.stderr)
+        print(f"****MCP Server catched Error: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
