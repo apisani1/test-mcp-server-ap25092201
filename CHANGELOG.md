@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.6] - 2025-09-27
+
+ ### Changes
+- Update lock file
+- 💄 style: add blank line for import grouping
+- 🔧 chore: comment out unused imports and version display
+
+
+
 ## [0.1.5] - 2025-09-27
 
  ### Changes
