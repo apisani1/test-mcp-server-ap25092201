@@ -1,6 +1,5 @@
 import base64
 import mimetypes
-
 import sys
 from typing import (
     List,
