@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.5] - 2025-09-27
+
+ ### Changes
+- 🔧 fix: redirect startup message to stderr
+
+
 ## [0.1.4] - 2025-09-24
 
  ### Changes
