@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.8] - 2025-09-27
+
+ ### Changes
+- 🐛 fix: improve error handling and logging in MCP server
+
+
+
 ## [0.1.7] - 2025-09-27
 
  ### Changes
