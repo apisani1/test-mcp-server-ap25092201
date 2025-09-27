@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.10] - 2025-09-27
+
+ ### Changes
+- 🧑‍💻 chore: add comprehensive debugging for MCP server environment
+
+
+
 ## [0.1.9] - 2025-09-27
 
  ### Changes

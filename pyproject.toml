@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "test-mcp-server-ap25092201"
-version = "0.1.9"
+version = "0.1.10"
 description = "Test MCP Server with media handling and prompt capabilities for bootstrap testing"
 authors = [{name = "Antonio Pisani", email = "antonio.pisani@gmail.com"}]
 license = {text = "MIT"}
