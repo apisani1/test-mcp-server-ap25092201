@@ -1,5 +1,6 @@
 import base64
 import mimetypes
+import os
 import sys
 from typing import (
     List,
@@ -118,6 +119,14 @@ def send_content_uri(content_uri: str) -> List[Message]:
 def main() -> None:
     """Entry point for the MCP server CLI command."""
     print(f"****Starting MCP PromptServer version {__version__}...", file=sys.stderr)
+
+    # Debug stdin/stdout/stderr
+    print(f"****stdin.isatty(): {sys.stdin.isatty()}", file=sys.stderr)
+    print(f"****stdout.isatty(): {sys.stdout.isatty()}", file=sys.stderr)
+    print(f"****stderr.isatty(): {sys.stderr.isatty()}", file=sys.stderr)
+    print(f"****stdin.fileno(): {sys.stdin.fileno()}", file=sys.stderr)
+    print(f"****Working directory: {os.getcwd()}", file=sys.stderr)
+
     try:
         mcp.run()
         print("****MCP Server stopped.", file=sys.stderr)

@@ -2152,7 +2152,7 @@ wheels = [
 
 [[package]]
 name = "test-mcp-server-ap25092201"
-version = "0.1.8"
+version = "0.1.9"
 source = { editable = "." }
 dependencies = [
     { name = "mcp", extra = ["cli"] },
