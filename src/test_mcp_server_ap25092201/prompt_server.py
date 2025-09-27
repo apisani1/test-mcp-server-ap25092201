@@ -117,8 +117,11 @@ def send_content_uri(content_uri: str) -> List[Message]:
 
 def main() -> None:
     """Entry point for the MCP server CLI command."""
-    print(f"Starting MCP PromptServer version {__version__}...", file=sys.stderr)
-    mcp.run()
+    print(f"****Starting MCP PromptServer version {__version__}...", file=sys.stderr)
+    try:
+        mcp.run()
+    except Exception as e:
+        print(f"****MCP Server catch Error: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
