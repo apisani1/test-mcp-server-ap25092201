@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.7] - 2025-09-27
+
+ ### Changes
+- Reformat
+- ♻️ refactor: restore imports and version display
+
+
+
 ## [0.1.6] - 2025-09-27
 
  ### Changes
