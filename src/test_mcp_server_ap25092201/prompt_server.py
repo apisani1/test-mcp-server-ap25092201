@@ -92,7 +92,7 @@ def load_file(file_path: str) -> List[Message]:
             content=EmbeddedResource(
                 type="resource",
                 resource=BlobResourceContents(
-                    uri=f"file://{file_path}",
+                    uri=f"file://{file_path}",  # type: ignore
                     blob=base64.b64encode(file_data).decode("utf-8"),
                 ),
             )
@@ -108,7 +108,7 @@ def send_content_uri(content_uri: str) -> List[Message]:
             content=ResourceLink(
                 type="resource_link",
                 name=content_uri.split("/")[-1],
-                uri=content_uri,
+                uri=content_uri,  # type: ignore
                 mimeType=mimetypes.guess_type(content_uri)[0] or "application/octet-stream",
             )
         )
