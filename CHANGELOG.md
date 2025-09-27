@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.9] - 2025-09-27
+
+ ### Changes
+- ✨ feat: enhance MCP server lifecycle logging
+
+
+
 ## [0.1.8] - 2025-09-27
 
  ### Changes
